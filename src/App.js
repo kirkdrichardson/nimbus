@@ -13,6 +13,7 @@ class App extends Component {
         <p className="App-intro">
           { 'Words in the sky' }
         </p>
+        <button onClick={() => console.error('gotcha')}>Make request</button>
       </div>
     );
   }
