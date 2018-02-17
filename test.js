@@ -5,7 +5,7 @@ console.log(googleTrends);
 googleTrends.interestOverTime({keyword: 'Women\'s march'})
 .then(function(results){
   const timelineData = JSON.parse(results).default.timelineData;
-  console.log(timelineData[0]);
+  console.log(timelineData);
 })
 .catch(function(err){
   console.error('Oh no there was an error', err);
