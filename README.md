@@ -4,7 +4,8 @@
 from the main directory:
 ```
 npm install
-npm start```
+npm start
+```
 
 ### To save changes to the UI
 ```
