@@ -1,0 +1,21 @@
+{
+  "name": "nimbus-google-trends",
+  "description": "Explore Google trends data with create-react-app UI + Node API",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
