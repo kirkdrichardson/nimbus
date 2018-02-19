@@ -2,6 +2,19 @@ const express = require('express');
 const path = require('path');
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
+const googleTrends = require('google-trends-api');
+
+const getInterestOverTime = keyword => {
+  return googleTrends.interestOverTime({ keyword })
+  .then(function(results){
+    const timelineData = JSON.parse(results).default.timelineData
+    return timelineData;
+  })
+  .catch(function(err){
+    console.error('Oh no there was an error', err);
+  });
+}
+
 
 const PORT = process.env.PORT || 5000;
 
@@ -26,8 +39,11 @@ if (cluster.isMaster) {
 
   // Answer API requests.
   app.get('/api', function (req, res) {
+    const searchQuery = req.query.searchQuery;
+    console.log(searchQuery)
     res.set('Content-Type', 'application/json');
-    res.send('{"message":"Hello from the custom server!"}');
+    getInterestOverTime(searchQuery)
+    .then((results) => res.send(JSON.stringify(results)));
   });
 
   // All remaining requests return the React app, so it can handle routing.
