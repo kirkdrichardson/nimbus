@@ -47,7 +47,7 @@ class App extends Component {
           });
         })
     } else {
-      console.errror('No search term entered');
+      console.error('No search term entered');
     }
   }
 
